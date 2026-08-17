@@ -1,0 +1,665 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Relatório RD Station - Email Marketing · Agosto 2026</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Segoe UI', Arial, sans-serif;
+            background: #f0f2f5;
+            padding: 40px 20px;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        .page {
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+            padding: 40px 50px;
+            margin-bottom: 40px;
+            page-break-after: always;
+        }
+        .page:last-child {
+            page-break-after: auto;
+        }
+
+        /* CAPA */
+        .capa {
+            color: white;
+            text-align: center;
+            padding: 80px 50px;
+            border-radius: 12px;
+        }
+        .capa.clube { background: #1E2A4A; }
+        .capa.voala { background: #0D3B4C; }
+        .capa.newsletter { background: #2C3E50; }
+        .capa .tag {
+            color: #F5A623;
+            font-size: 14px;
+            font-weight: bold;
+            letter-spacing: 2px;
+            margin-bottom: 20px;
+        }
+        .capa h1 {
+            font-size: 42px;
+            margin-bottom: 10px;
+        }
+        .capa h2 {
+            font-size: 28px;
+            font-weight: 300;
+            opacity: 0.9;
+            margin-bottom: 30px;
+        }
+        .capa .periodo {
+            font-size: 18px;
+            opacity: 0.7;
+            margin-bottom: 40px;
+        }
+        .capa .metricas {
+            display: flex;
+            justify-content: center;
+            gap: 50px;
+            flex-wrap: wrap;
+        }
+        .capa .metricas div {
+            text-align: center;
+        }
+        .capa .metricas .num {
+            font-size: 32px;
+            font-weight: bold;
+            color: #F5A623;
+        }
+        .capa .metricas .label {
+            font-size: 12px;
+            opacity: 0.7;
+        }
+
+        /* TÍTULOS */
+        .section-title {
+            font-size: 24px;
+            font-weight: bold;
+            color: #1E2A4A;
+            margin-bottom: 5px;
+        }
+        .section-sub {
+            font-size: 13px;
+            color: #666;
+            margin-bottom: 20px;
+        }
+
+        /* TABELAS */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 12px;
+            margin-bottom: 10px;
+        }
+        th {
+            background: #1E2A4A;
+            color: white;
+            padding: 8px 10px;
+            text-align: left;
+            font-weight: 600;
+        }
+        td {
+            padding: 6px 10px;
+            border-bottom: 1px solid #eee;
+        }
+        tr:hover td {
+            background: #f8f9fa;
+        }
+        .highlight {
+            background: #FFF8E1;
+        }
+
+        /* GRÁFICOS SIMPLES COM CSS */
+        .chart-container {
+            display: flex;
+            gap: 40px;
+            flex-wrap: wrap;
+            margin: 20px 0 30px 0;
+        }
+        .chart-box {
+            flex: 1;
+            min-width: 280px;
+        }
+        .chart-box .chart-title {
+            font-weight: bold;
+            font-size: 14px;
+            color: #1E2A4A;
+            margin-bottom: 8px;
+            text-align: center;
+        }
+        .bar-chart {
+            margin: 10px 0;
+        }
+        .bar-row {
+            display: flex;
+            align-items: center;
+            margin-bottom: 6px;
+            gap: 10px;
+        }
+        .bar-row .bar-label {
+            width: 120px;
+            font-size: 10px;
+            text-align: right;
+            flex-shrink: 0;
+            font-weight: 500;
+        }
+        .bar-row .bar-track {
+            flex: 1;
+            height: 22px;
+            background: #e9ecef;
+            border-radius: 4px;
+            overflow: hidden;
+            position: relative;
+        }
+        .bar-row .bar-fill {
+            height: 100%;
+            border-radius: 4px;
+            display: flex;
+            align-items: center;
+            justify-content: flex-end;
+            padding-right: 8px;
+            font-size: 10px;
+            color: white;
+            font-weight: bold;
+            min-width: 30px;
+            transition: width 0.5s;
+        }
+        .bar-fill.teal { background: #0D8C8C; }
+        .bar-fill.gold { background: #F5A623; }
+        .bar-fill.coral { background: #E05A4E; }
+        .bar-fill.purple { background: #9467BD; }
+        .bar-fill.green { background: #2CA02C; }
+        .bar-fill.blue { background: #1f77b4; }
+
+        /* CARDS DE HORÁRIOS */
+        .horario-card {
+            display: flex;
+            gap: 30px;
+            flex-wrap: wrap;
+            margin: 15px 0 25px 0;
+            padding: 20px 25px;
+            background: #f8f9fa;
+            border-radius: 10px;
+            border: 1px solid #e9ecef;
+        }
+        .horario-card .item {
+            flex: 1;
+            min-width: 140px;
+        }
+        .horario-card .item .label {
+            font-size: 11px;
+            color: #888;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        .horario-card .item .valor {
+            font-size: 20px;
+            font-weight: bold;
+            color: #1E2A4A;
+            margin-top: 2px;
+        }
+        .horario-card .item .detalhe {
+            font-size: 12px;
+            color: #888;
+            margin-top: 2px;
+        }
+        .horario-card .item .valor.destaque { color: #0D8C8C; }
+        .horario-card .item .valor.ruim { color: #E05A4E; }
+
+        /* INSIGHTS */
+        .insights {
+            background: #f8f9fa;
+            border-left: 4px solid #F5A623;
+            padding: 15px 20px;
+            margin: 10px 0;
+        }
+        .insights li {
+            list-style: none;
+            padding: 6px 0;
+            font-size: 13px;
+            border-bottom: 1px solid #eee;
+        }
+        .insights li:last-child {
+            border-bottom: none;
+        }
+        .insights.teal { border-left-color: #0D8C8C; }
+        .insights.coral { border-left-color: #E05A4E; }
+
+        /* COMPARATIVO */
+        .comparativo {
+            display: flex;
+            gap: 30px;
+            flex-wrap: wrap;
+            margin: 15px 0 20px 0;
+        }
+        .comparativo .card {
+            flex: 1;
+            min-width: 180px;
+            padding: 15px 20px;
+            background: #f8f9fa;
+            border-radius: 10px;
+            text-align: center;
+            border: 1px solid #e9ecef;
+        }
+        .comparativo .card .num {
+            font-size: 28px;
+            font-weight: bold;
+            color: #1E2A4A;
+        }
+        .comparativo .card .label {
+            font-size: 12px;
+            color: #888;
+        }
+        .comparativo .card .destaque { color: #0D8C8C; }
+        .comparativo .card .ruim { color: #E05A4E; }
+
+        @media print {
+            body { background: white; padding: 0; }
+            .page { box-shadow: none; border-radius: 0; margin: 0; padding: 30px 40px; }
+            .capa { border-radius: 0; }
+        }
+        @media (max-width: 700px) {
+            .page { padding: 20px; }
+            .capa { padding: 40px 20px; }
+            .capa .metricas { gap: 20px; }
+            .capa h1 { font-size: 28px; }
+            .capa h2 { font-size: 20px; }
+            .bar-row .bar-label { width: 70px; font-size: 8px; }
+            table { font-size: 10px; }
+            th, td { padding: 4px 6px; }
+            .horario-card { flex-direction: column; gap: 12px; }
+            .chart-container { flex-direction: column; gap: 20px; }
+            .comparativo { flex-direction: column; }
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+
+    <!-- ============================================================ -->
+    <!-- CAPA - CLUBE (Agosto 2026) -->
+    <!-- ============================================================ -->
+    <div class="page capa clube">
+        <div class="tag">ISEND</div>
+        <h1>Relatório de Email Marketing</h1>
+        <h2>Clube Bancorbrás</h2>
+        <div class="periodo">Agosto 2026 (04/08 a 14/08)</div>
+        <div class="metricas">
+            <div><div class="num">307.196</div><div class="label">E-mails Enviados</div></div>
+            <div><div class="num">299.904</div><div class="label">E-mails Entregues</div></div>
+            <div><div class="num">19,9%</div><div class="label">Taxa de Abertura</div></div>
+            <div><div class="num">987</div><div class="label">Cliques Únicos</div></div>
+            <div><div class="num">1,7%</div><div class="label">CTR</div></div>
+            <div><div class="num">23</div><div class="label">Cancelamentos</div></div>
+        </div>
+    </div>
+
+    <!-- ============================================================ -->
+    <!-- VISÃO GERAL - CLUBE (Agosto) -->
+    <!-- ============================================================ -->
+    <div class="page">
+        <div class="section-title">📊 Visão Geral · Clube (Agosto 2026)</div>
+        <div class="section-sub">Métricas consolidadas das 4 campanhas do período</div>
+        <table>
+            <tr><th>Métrica</th><th style="text-align:right;">Valor</th></tr>
+            <tr><td>Campanhas</td><td style="text-align:right;">4</td></tr>
+            <tr><td>Total de E-mails Enviados</td><td style="text-align:right;">307.196</td></tr>
+            <tr><td>E-mails Entregues</td><td style="text-align:right;">299.904</td></tr>
+            <tr><td>Taxa de Entrega</td><td style="text-align:right;">97,63%</td></tr>
+            <tr><td>Aberturas Únicas</td><td style="text-align:right;">59.657</td></tr>
+            <tr><td>Taxa de Abertura</td><td style="text-align:right;">19,9%</td></tr>
+            <tr><td>Cliques Únicos</td><td style="text-align:right;">987</td></tr>
+            <tr><td>CTR</td><td style="text-align:right;">1,7%</td></tr>
+            <tr><td>Cancelamentos</td><td style="text-align:right;">23</td></tr>
+            <tr><td>Total de Erros</td><td style="text-align:right;">7.292</td></tr>
+        </table>
+    </div>
+
+    <!-- ============================================================ -->
+    <!-- GRÁFICOS - CLUBE (Agosto) -->
+    <!-- ============================================================ -->
+    <div class="page">
+        <div class="section-title">📈 Análise Gráfica · Clube (Agosto 2026)</div>
+        <div class="section-sub">Detalhamento por campanha</div>
+
+        <div class="chart-container">
+            <div class="chart-box">
+                <div class="chart-title">📊 Taxa de Abertura</div>
+                <div class="bar-chart">
+                    <div class="bar-row">
+                        <span class="bar-label">Pacotes Voala 3</span>
+                        <div class="bar-track"><div class="bar-fill teal" style="width:94%;">18,7%</div></div>
+                    </div>
+                    <div class="bar-row">
+                        <span class="bar-label">[MKT]-Guia-Nordeste</span>
+                        <div class="bar-track"><div class="bar-fill blue" style="width:100%;">21,0%</div></div>
+                    </div>
+                    <div class="bar-row">
+                        <span class="bar-label">Clube Day 2 disp</span>
+                        <div class="bar-track"><div class="bar-fill green" style="width:95%;">20,0%</div></div>
+                    </div>
+                    <div class="bar-row">
+                        <span class="bar-label">Clube Day</span>
+                        <div class="bar-track"><div class="bar-fill purple" style="width:96%;">20,2%</div></div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="chart-box">
+                <div class="chart-title">🖱️ CTR</div>
+                <div class="bar-chart">
+                    <div class="bar-row">
+                        <span class="bar-label">Pacotes Voala 3</span>
+                        <div class="bar-track"><div class="bar-fill gold" style="width:40%;">1,4%</div></div>
+                    </div>
+                    <div class="bar-row">
+                        <span class="bar-label">[MKT]-Guia-Nordeste</span>
+                        <div class="bar-track"><div class="bar-fill gold" style="width:100%;">3,5%</div></div>
+                    </div>
+                    <div class="bar-row">
+                        <span class="bar-label">Clube Day 2 disp</span>
+                        <div class="bar-track"><div class="bar-fill gold" style="width:20%;">0,7%</div></div>
+                    </div>
+                    <div class="bar-row">
+                        <span class="bar-label">Clube Day</span>
+                        <div class="bar-track"><div class="bar-fill gold" style="width:29%;">1,0%</div></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div style="margin-top:10px; padding:15px; background:#f8f9fa; border-radius:8px; font-size:13px; color:#666;">
+            <b>📌 Destaque:</b> A campanha <b>"[MKT]-Guia-Nordeste-Clube"</b> (12/08) alcançou a maior taxa de abertura (21%) e o melhor CTR (3,5%). A campanha "Pacotes Voala 3" (04/08) teve o maior volume de envios (91.946).
+        </div>
+    </div>
+
+    <!-- ============================================================ -->
+    <!-- TABELA DETALHADA - CLUBE (Agosto) -->
+    <!-- ============================================================ -->
+    <div class="page">
+        <div class="section-title">📋 Campanhas · Clube (Agosto 2026)</div>
+        <div class="section-sub">Detalhamento de cada envio</div>
+        <table>
+            <tr>
+                <th>E-mail / Título</th>
+                <th>Data/Hora</th>
+                <th>Dia</th>
+                <th style="text-align:right;">Enviados</th>
+                <th style="text-align:right;">Entregues</th>
+                <th style="text-align:right;">Aberturas Únicas</th>
+                <th style="text-align:right;">Abertura %</th>
+                <th style="text-align:right;">Cliques Únicos</th>
+                <th style="text-align:right;">CTR %</th>
+                <th style="text-align:right;">Cancel.</th>
+            </tr>
+            <tr class="highlight">
+                <td><b>Pacotes Voala 3</b><br><span style="font-size:10px;color:#888;">✈️ Seu próximo destino começa aqui</span></td>
+                <td>04/08 - 10:00</td>
+                <td>Ter</td>
+                <td style="text-align:right;">91.946</td>
+                <td style="text-align:right;">89.397</td>
+                <td style="text-align:right;">16.755</td>
+                <td style="text-align:right; font-weight:bold; color:#0D8C8C;">18,7%</td>
+                <td style="text-align:right;">239</td>
+                <td style="text-align:right; font-weight:bold; color:#0D8C8C;">1,4%</td>
+                <td style="text-align:right;">12</td>
+            </tr>
+            <tr>
+                <td><b>[MKT]-Guia-Nordeste</b><br><span style="font-size:10px;color:#888;">📘 O Nordeste te chama</span></td>
+                <td>12/08 - 12:00</td>
+                <td>Qua</td>
+                <td style="text-align:right;">71.754</td>
+                <td style="text-align:right;">70.131</td>
+                <td style="text-align:right;">14.736</td>
+                <td style="text-align:right; font-weight:bold; color:#0D8C8C;">21,0%</td>
+                <td style="text-align:right;">514</td>
+                <td style="text-align:right; font-weight:bold; color:#0D8C8C;">3,5%</td>
+                <td style="text-align:right;">3</td>
+            </tr>
+            <tr>
+                <td><b>Clube Day 2 disp</b><br><span style="font-size:10px;color:#888;">🎁 É hoje, aproveite o Clube Day!</span></td>
+                <td>14/08 - 11:24</td>
+                <td>Sex</td>
+                <td style="text-align:right;">71.745</td>
+                <td style="text-align:right;">70.326</td>
+                <td style="text-align:right;">14.045</td>
+                <td style="text-align:right; font-weight:bold; color:#0D8C8C;">20,0%</td>
+                <td style="text-align:right;">97</td>
+                <td style="text-align:right; font-weight:bold; color:#0D8C8C;">0,7%</td>
+                <td style="text-align:right;">5</td>
+            </tr>
+            <tr>
+                <td><b>Clube Day</b><br><span style="font-size:10px;color:#888;">🎉 Já pode indicar e vocês dois ganham!</span></td>
+                <td>13/08 - 13:18</td>
+                <td>Qui</td>
+                <td style="text-align:right;">71.751</td>
+                <td style="text-align:right;">70.050</td>
+                <td style="text-align:right;">14.121</td>
+                <td style="text-align:right; font-weight:bold; color:#0D8C8C;">20,2%</td>
+                <td style="text-align:right;">137</td>
+                <td style="text-align:right; font-weight:bold; color:#0D8C8C;">1,0%</td>
+                <td style="text-align:right;">3</td>
+            </tr>
+        </table>
+        <div style="margin-top:10px; font-size:12px; color:#999;">Fonte: ISEND · Dados extraídos em 14/08/2026</div>
+    </div>
+
+    <!-- ============================================================ -->
+    <!-- CAPA - OPERADORA (Agosto 2026) -->
+    <!-- ============================================================ -->
+    <div class="page capa" style="background:#1E2A4A;">
+        <div class="tag" style="color:#F5A623;">ISEND</div>
+        <h1>Relatório de Email Marketing</h1>
+        <h2>Operadora Bancorbrás</h2>
+        <div class="periodo">Agosto 2026 (05/08 a 14/08)</div>
+        <div class="metricas">
+            <div><div class="num">696</div><div class="label">E-mails Enviados</div></div>
+            <div><div class="num">635</div><div class="label">E-mails Entregues</div></div>
+            <div><div class="num">14,2%</div><div class="label">Taxa de Abertura</div></div>
+            <div><div class="num">0</div><div class="label">Cliques Únicos</div></div>
+            <div><div class="num">0%</div><div class="label">CTR</div></div>
+            <div><div class="num">3</div><div class="label">Cancelamentos</div></div>
+        </div>
+    </div>
+
+    <!-- ============================================================ -->
+    <!-- VISÃO GERAL - OPERADORA (Agosto) -->
+    <!-- ============================================================ -->
+    <div class="page">
+        <div class="section-title">📊 Visão Geral · Operadora (Agosto 2026)</div>
+        <div class="section-sub">Métricas consolidadas das 2 campanhas do período</div>
+        <table>
+            <tr><th>Métrica</th><th style="text-align:right;">Valor</th></tr>
+            <tr><td>Campanhas</td><td style="text-align:right;">2</td></tr>
+            <tr><td>Total de E-mails Enviados</td><td style="text-align:right;">696</td></tr>
+            <tr><td>E-mails Entregues</td><td style="text-align:right;">635</td></tr>
+            <tr><td>Taxa de Entrega</td><td style="text-align:right;">91,24%</td></tr>
+            <tr><td>Aberturas Únicas</td><td style="text-align:right;">90</td></tr>
+            <tr><td>Taxa de Abertura</td><td style="text-align:right;">14,2%</td></tr>
+            <tr><td>Cliques Únicos</td><td style="text-align:right;">0</td></tr>
+            <tr><td>CTR</td><td style="text-align:right;">0%</td></tr>
+            <tr><td>Cancelamentos</td><td style="text-align:right;">3</td></tr>
+            <tr><td>Total de Erros</td><td style="text-align:right;">61</td></tr>
+        </table>
+    </div>
+
+    <!-- ============================================================ -->
+    <!-- GRÁFICOS - OPERADORA (Agosto) -->
+    <!-- ============================================================ -->
+    <div class="page">
+        <div class="section-title">📈 Análise Gráfica · Operadora (Agosto 2026)</div>
+        <div class="section-sub">Detalhamento por campanha</div>
+
+        <div class="chart-container">
+            <div class="chart-box">
+                <div class="chart-title">📊 Taxa de Abertura</div>
+                <div class="bar-chart">
+                    <div class="bar-row">
+                        <span class="bar-label">Costão do Santinho</span>
+                        <div class="bar-track"><div class="bar-fill coral" style="width:96%;">13,7%</div></div>
+                    </div>
+                    <div class="bar-row">
+                        <span class="bar-label">Vila Galé 34º</span>
+                        <div class="bar-track"><div class="bar-fill coral" style="width:100%;">14,7%</div></div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="chart-box">
+                <div class="chart-title">🖱️ CTR</div>
+                <div class="bar-chart">
+                    <div class="bar-row">
+                        <span class="bar-label">Costão do Santinho</span>
+                        <div class="bar-track"><div class="bar-fill coral" style="width:0%;">0%</div></div>
+                    </div>
+                    <div class="bar-row">
+                        <span class="bar-label">Vila Galé 34º</span>
+                        <div class="bar-track"><div class="bar-fill coral" style="width:0%;">0%</div></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div style="margin-top:10px; padding:15px; background:#f8f9fa; border-radius:8px; font-size:13px; color:#666;">
+            <b>📌 Destaque:</b> As duas campanhas da Operadora apresentaram taxa de abertura próxima a 14%, porém <b>0% de CTR</b> em ambas. A campanha "Vila Galé 34º Melhor Idade" (14/08) registrou a maior abertura (14,7%).
+        </div>
+    </div>
+
+    <!-- ============================================================ -->
+    <!-- TABELA DETALHADA - OPERADORA (Agosto) -->
+    <!-- ============================================================ -->
+    <div class="page">
+        <div class="section-title">📋 Campanhas · Operadora (Agosto 2026)</div>
+        <div class="section-sub">Detalhamento de cada envio</div>
+        <table>
+            <tr>
+                <th>E-mail / Título</th>
+                <th>Data/Hora</th>
+                <th>Dia</th>
+                <th style="text-align:right;">Enviados</th>
+                <th style="text-align:right;">Entregues</th>
+                <th style="text-align:right;">Aberturas Únicas</th>
+                <th style="text-align:right;">Abertura %</th>
+                <th style="text-align:right;">Cliques Únicos</th>
+                <th style="text-align:right;">CTR %</th>
+                <th style="text-align:right;">Cancel.</th>
+            </tr>
+            <tr class="highlight">
+                <td><b>Costão do Santinho</b><br><span style="font-size:10px;color:#888;">🏖️ Dia dos Pais no Costão</span></td>
+                <td>05/08 - 10:59</td>
+                <td>Qua</td>
+                <td style="text-align:right;">349</td>
+                <td style="text-align:right;">315</td>
+                <td style="text-align:right;">43</td>
+                <td style="text-align:right; font-weight:bold; color:#0D8C8C;">13,7%</td>
+                <td style="text-align:right;">0</td>
+                <td style="text-align:right; font-weight:bold; color:#E05A4E;">0%</td>
+                <td style="text-align:right;">2</td>
+            </tr>
+            <tr>
+                <td><b>Vila Galé 34º Melhor Idade</b><br><span style="font-size:10px;color:#888;">🎄 Venda Natal público 60+</span></td>
+                <td>14/08 - 12:44</td>
+                <td>Sex</td>
+                <td style="text-align:right;">347</td>
+                <td style="text-align:right;">320</td>
+                <td style="text-align:right;">47</td>
+                <td style="text-align:right; font-weight:bold; color:#0D8C8C;">14,7%</td>
+                <td style="text-align:right;">0</td>
+                <td style="text-align:right; font-weight:bold; color:#E05A4E;">0%</td>
+                <td style="text-align:right;">1</td>
+            </tr>
+        </table>
+        <div style="margin-top:10px; font-size:12px; color:#999;">Fonte: ISEND · Dados extraídos em 14/08/2026</div>
+    </div>
+
+    <!-- ============================================================ -->
+    <!-- COMPARATIVO GERAL (Agosto) -->
+    <!-- ============================================================ -->
+    <div class="page">
+        <div class="section-title">📊 Comparativo Geral · Agosto 2026</div>
+        <div class="section-sub">Performance consolidada de todas as marcas (6 campanhas)</div>
+
+        <div class="comparativo">
+            <div class="card">
+                <div class="num destaque">307.196</div>
+                <div class="label">Enviados · Clube</div>
+                <div style="font-size:16px; font-weight:bold; color:#0D8C8C; margin-top:5px;">19,9%</div>
+                <div class="label">Abertura</div>
+                <div style="font-size:14px; font-weight:bold; color:#0D8C8C; margin-top:3px;">1,7% CTR</div>
+            </div>
+            <div class="card">
+                <div class="num destaque">696</div>
+                <div class="label">Enviados · Operadora</div>
+                <div style="font-size:16px; font-weight:bold; color:#E05A4E; margin-top:5px;">14,2%</div>
+                <div class="label">Abertura</div>
+                <div style="font-size:14px; font-weight:bold; color:#E05A4E; margin-top:3px;">0% CTR</div>
+            </div>
+        </div>
+
+        <table>
+            <tr>
+                <th>Métrica</th>
+                <th style="text-align:right;">Clube</th>
+                <th style="text-align:right;">Operadora</th>
+                <th style="text-align:right;">Total</th>
+            </tr>
+            <tr>
+                <td>Campanhas</td>
+                <td style="text-align:right;">4</td>
+                <td style="text-align:right;">2</td>
+                <td style="text-align:right; font-weight:bold;">6</td>
+            </tr>
+            <tr>
+                <td>E-mails Enviados</td>
+                <td style="text-align:right;">307.196</td>
+                <td style="text-align:right;">696</td>
+                <td style="text-align:right; font-weight:bold;">307.892</td>
+            </tr>
+            <tr>
+                <td>E-mails Entregues</td>
+                <td style="text-align:right;">299.904</td>
+                <td style="text-align:right;">635</td>
+                <td style="text-align:right; font-weight:bold;">300.539</td>
+            </tr>
+            <tr>
+                <td>Taxa de Entrega</td>
+                <td style="text-align:right;">97,63%</td>
+                <td style="text-align:right;">91,24%</td>
+                <td style="text-align:right; font-weight:bold;">97,61%</td>
+            </tr>
+            <tr>
+                <td>Taxa de Abertura</td>
+                <td style="text-align:right;">19,9%</td>
+                <td style="text-align:right;">14,2%</td>
+                <td style="text-align:right; font-weight:bold;">19,8%</td>
+            </tr>
+            <tr>
+                <td>CTR</td>
+                <td style="text-align:right;">1,7%</td>
+                <td style="text-align:right;">0%</td>
+                <td style="text-align:right; font-weight:bold;">1,6%</td>
+            </tr>
+            <tr>
+                <td>Cancelamentos</td>
+                <td style="text-align:right;">23</td>
+                <td style="text-align:right;">3</td>
+                <td style="text-align:right; font-weight:bold;">26</td>
+            </tr>
+        </table>
+
+        <div style="margin-top:20px; padding:15px; background:#f8f9fa; border-radius:8px; font-size:13px; color:#666;">
+            <b>📌 Análise Geral:</b> Em agosto de 2026 foram realizadas <b>6 campanhas</b> (4 Clube + 2 Operadora), totalizando <b>307.892</b> e-mails enviados. O <b>Clube</b> mantém desempenho superior com 19,9% de abertura e 1,7% de CTR, enquanto a <b>Operadora</b> registra 14,2% de abertura, porém <b>0% de CTR</b> nas duas campanhas.
+        </div>
+        <div style="margin-top:15px; font-size:12px; color:#999;">Fonte: ISEND · Relatório Agosto 2026 (04/08 a 14/08)</div>
+    </div>
+
+</div>
+</body>
+</html>
